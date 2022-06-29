@@ -60,6 +60,16 @@ export default function Layout({ title, children }) {
                         ประวัติ
                       </DropdownLink>
                     </Menu.Items>
+                    {session.user.isAdmin && (
+                      <Menu.Item>
+                        <DropdownLink
+                          className="dropdown-link"
+                          href="/admin/dashboard"
+                        >
+                          Admin Dashboard
+                        </DropdownLink>
+                      </Menu.Item>
+                    )}
                     <Menu.Items>
                       <a
                         className="dropdown-link"
