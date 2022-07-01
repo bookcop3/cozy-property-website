@@ -15,6 +15,23 @@ function reducer(state, action) {
       return { ...state, loading: false, error: '' };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
+    case 'UPDATE_REQUEST':
+      return { ...state, loadingUpdate: true, errorUpdate: '' };
+    case 'UPDATE_SUCCESS':
+      return { ...state, loadingUpdate: false, errorUpdate: '' };
+    case 'UPDATE_FAIL':
+      return { ...state, loadingUpdate: false, errorUpdate: action.payload };
+
+    case 'UPLOAD_REQUEST':
+      return { ...state, loadingUpload: true, errorUpload: '' };
+    case 'UPLOAD_SUCCESS':
+      return {
+        ...state,
+        loadingUpload: false,
+        errorUpload: '',
+      };
+    case 'UPLOAD_FAIL':
+      return { ...state, loadingUpload: false, errorUpload: action.payload };
     default:
       return state;
   }
@@ -22,10 +39,11 @@ function reducer(state, action) {
 export default function AdminProductEditScreen() {
   const { query } = useRouter();
   const productId = query.id;
-  const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-  });
+  const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      error: '',
+    });
 
   const {
     register,
@@ -42,12 +60,15 @@ export default function AdminProductEditScreen() {
         dispatch({ type: 'FETCH_SUCCESS' });
         setValue('name', data.name);
         setValue('slug', data.slug);
-        setValue('price', data.price);
+        setValue('product_type', data.product_type);
+        setValue('details', data.details);
+        setValue('address', data.address);
         setValue('image', data.image);
-        setValue('category', data.category);
-        setValue('brand', data.brand);
-        setValue('countInStock', data.countInStock);
-        setValue('description', data.description);
+        setValue('telephone_number', data.telephone_number);
+        setValue('sales_type', data.sales_type);
+        setValue('price', data.price);
+        setValue('rating', data.rating);
+        setValue('numReviews', data.numReviews);
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
@@ -58,27 +79,57 @@ export default function AdminProductEditScreen() {
 
   const router = useRouter();
 
+  const uploadHandler = async (e, imageField = 'image') => {
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`;
+    try {
+      dispatch({ type: 'UPLOAD_REQUEST' });
+      const {
+        data: { signature, timestamp },
+      } = await axios('/api/admin/cloudinary-sign');
+
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('signature', signature);
+      formData.append('timestamp', timestamp);
+      formData.append('api_key', process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY);
+      const { data } = await axios.post(url, formData);
+      dispatch({ type: 'UPLOAD_SUCCESS' });
+      setValue(imageField, data.secure_url);
+      toast.success('File uploaded successfully');
+    } catch (err) {
+      dispatch({ type: 'UPLOAD_FAIL', payload: getError(err) });
+      toast.error(getError(err));
+    }
+  };
+
   const submitHandler = async ({
     name,
     slug,
-    price,
-    category,
+    product_type,
+    details,
+    address,
     image,
-    brand,
-    countInStock,
-    description,
+    telephone_number,
+    sales_type,
+    price,
+    rating,
+    numReviews,
   }) => {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(`/api/admin/products/${productId}`, {
         name,
         slug,
-        price,
-        category,
+        product_type,
+        details,
+        address,
         image,
-        brand,
-        countInStock,
-        description,
+        telephone_number,
+        sales_type,
+        price,
+        rating,
+        numReviews,
       });
       dispatch({ type: 'UPDATE_SUCCESS' });
       toast.success('Product updated successfully');
@@ -96,9 +147,6 @@ export default function AdminProductEditScreen() {
           <ul>
             <li>
               <Link href="/admin/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link href="/admin/orders">Orders</Link>
             </li>
             <li>
               <Link href="/admin/products">
@@ -195,18 +243,15 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="image">รูปภาพ</label>
+                <label htmlFor="imageFile">Upload image</label>
                 <input
-                  type="text"
+                  type="file"
                   className="w-full"
-                  id="image"
-                  {...register('image', {
-                    required: 'Please enter image',
-                  })}
+                  id="imageFile"
+                  onChange={uploadHandler}
                 />
-                {errors.image && (
-                  <div className="text-red-500">{errors.image.message}</div>
-                )}
+
+                {loadingUpload && <div>Uploading....</div>}
               </div>
               <div className="mb-4">
                 <label htmlFor="telephone_number">เบอร์โทร</label>
@@ -252,22 +297,6 @@ export default function AdminProductEditScreen() {
                 />
                 {errors.price && (
                   <div className="text-red-500">{errors.price.message}</div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="countInStock">countInStock</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="countInStock"
-                  {...register('countInStock', {
-                    required: 'Please enter countInStock',
-                  })}
-                />
-                {errors.countInStock && (
-                  <div className="text-red-500">
-                    {errors.countInStock.message}
-                  </div>
                 )}
               </div>
               <div className="mb-4">

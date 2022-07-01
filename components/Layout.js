@@ -94,12 +94,81 @@ export default function Layout({ title, children }) {
               </Link>
             </div>
           </nav>
+          <div>
+            <a className=" text-3xl inline-block  px-5 py-5 rounded-3xl  bg-white shadow-lg shadow-gray-300 ">
+              เว็บประกาศซื้อ ขาย เช่า อสังหาริมทรัพย์
+            </a>
+            <div className="flex h-10 items-center px-4 justify-center">
+              <div className="bg-gray-100 w-64 p-2 flex items-center mb-3">
+                <input
+                  type="ค้นหา ชื่อ/ทำเล/โครงการ"
+                  placeholder="ค้นหา ชื่อ/ทำเล/โครงการ"
+                  className="bg-gray-100 outline-none text-sm flex-1"
+                />
+              </div>
+              <Link href="/เงื่อนไข">
+                <a className="p-2 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
+                  เงื่อนไข
+                </a>
+              </Link>
+              <Link href="/ใกล้ฉัน">
+                <a className="p-2 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
+                  ใกล้ฉัน
+                </a>
+              </Link>
+            </div>
+            <div className="flex  items-center px-40 justify-between">
+              <img
+                src="../../images/homeicon.png"
+                width="100"
+                height="100"
+                alt="home"
+              />
+              <img
+                src="../../images/condoicon.png"
+                width="100"
+                height="100"
+                alt="home"
+              />
+              <img
+                src="../../images/Landicon.png"
+                width="100"
+                height="100"
+                alt="home"
+              />
+              <img
+                src="../../images/Othericon.png"
+                width="100"
+                height="100"
+                alt="home"
+              />
+            </div>
+          </div>
         </header>
-        <main className="container m-auto mt-4 px-4">{children}</main>
-        <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p className="p-10">ติดต่อเรา</p>
-          <p className="p-10">เกี่ยวกับเรา</p>
-          <p className="p-10">บทความ/เนื้อหา</p>
+        <main className="container  m-auto mt-4 px-4">{children}</main>
+        <footer className="flex h-5 ">
+          <p className="p-10">
+            ติดต่อเรา
+            <p>cozyproperty.th@gmail.com</p>
+            <p>+66</p>
+            <img
+              src="../../images/contactIcon.png"
+              width="170"
+              height="170"
+              alt="contact"
+            />
+          </p>
+          <p className="p-10">
+            เกี่ยวกับเรา
+            <p>ลงโฆษณา Banner</p>
+            <p>คูมือการใช้งาน</p>
+          </p>
+          <p className="p-10">
+            บทความ/เนื้อหา
+            <p>เนื้อหา</p>
+            <p>วิธีการลงประกาศ</p>
+            <p>About Asset</p>
+          </p>
         </footer>
       </div>
     </>

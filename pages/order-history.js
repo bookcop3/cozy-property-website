@@ -49,9 +49,9 @@ function OrderHistoryScreen() {
               <tr>
                 <th className="px-5 text-left">ID</th>
                 <th className="p-5 text-left">DATE</th>
-                <th className="p-5 text-left">TOTAL</th>
-                <th className="p-5 text-left">PAID</th>
-                <th className="p-5 text-left">DELIVERED</th>
+                <th className="p-5 text-left">Name</th>
+                <th className="p-5 text-left">TYPE</th>
+                <th className="p-5 text-left">Price</th>
                 <th className="p-5 text-left">ACTION</th>
               </tr>
             </thead>
@@ -60,7 +60,9 @@ function OrderHistoryScreen() {
                 <tr key={order._id} className="border-b">
                   <td className=" p-5 ">{order._id.substring(20, 24)}</td>
                   <td className=" p-5 ">{order.createdAt.substring(0, 10)}</td>
-                  <td className=" p-5 ">${order.totalPrice}</td>
+                  <td className=" p-5 ">{order.name}</td>
+                  <td className=" p-5 ">{order.product_type}</td>
+                  <td className=" p-5 ">{order.price}</td>
                   <td className=" p-5 ">
                     {order.isPaid
                       ? `${order.paidAt.substring(0, 10)}`

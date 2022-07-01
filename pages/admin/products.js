@@ -45,9 +45,6 @@ export default function AdminProdcutsScreen() {
               <Link href="/admin/dashboard">Dashboard</Link>
             </li>
             <li>
-              <Link href="/admin/orders">Orders</Link>
-            </li>
-            <li>
               <Link href="/admin/products">
                 <a className="font-bold">Products</a>
               </Link>
