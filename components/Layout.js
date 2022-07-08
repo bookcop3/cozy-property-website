@@ -46,7 +46,7 @@ export default function Layout({ title, children }) {
                   <Menu.Button className="text-blue-600">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right shadow-lg">
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg">
                     <Menu.Items>
                       <DropdownLink className="dropdown-link" href="/profile">
                         หน้าผู้ใช้งาน
@@ -95,7 +95,7 @@ export default function Layout({ title, children }) {
             </div>
           </nav>
         </header>
-        <main className="container  m-auto mt-4 px-4">{children}</main>
+        <main className="container m-auto mt-20 px-4">{children}</main>
         <footer className="flex h-5 ">
           <p className="p-10">
             ติดต่อเรา

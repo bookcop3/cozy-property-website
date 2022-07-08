@@ -83,6 +83,19 @@ const data = {
       rating: 5,
       numReviews: 10,
     },
+    {
+      name: 'ที่ดินร่ำรวยจุง',
+      slug: 'ที่ดินร่ำรวยจุง',
+      product_type: 'ที่ดิน',
+      details: 'ที่ดินขนาด 50 ตารางวา อยู่ติดถนน',
+      address: '52/1 อ.ทุ่งครุ จ.กทม. 10140',
+      image: '/images/img3.jpg',
+      telephone_number: '094-9911234',
+      sales_type: 'ขาย',
+      price: '1300000',
+      rating: 5,
+      numReviews: 10,
+    },
   ],
 };
 
