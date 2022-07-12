@@ -245,15 +245,43 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="imageFile">Upload image</label>
-                <input
-                  type="file"
-                  className="w-full"
-                  id="imageFile"
-                  onChange={uploadHandler}
-                />
+                <main className="flex min-h-screen items-center justify-center bg-gray-100 font-sans">
+                  <label
+                    form="dropzone-file"
+                    className="mx-auto cursor-pointer flex w-full max-w-lg flex-col items-center rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-10 w-10 text-blue-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-strokeWidth="2"
+                    >
+                      <path
+                        stroke-strokeLinecap="round"
+                        stroke-strokeLinejoin="round"
+                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                      />
+                    </svg>
 
-                {loadingUpload && <div>Uploading....</div>}
+                    <h2 className="mt-4 text-xl font-medium text-gray-700 tracking-wide">
+                      Payment File
+                    </h2>
+
+                    <p className="mt-2 text-gray-500 tracking-wide">
+                      Upload or darg drop your file SVG, PNG, JPG or GIF.{' '}
+                    </p>
+
+                    <input
+                      id="dropzone-file"
+                      type="file"
+                      className="hidden"
+                      onChange={uploadHandler}
+                    />
+                  </label>
+                </main>
+                ;{loadingUpload && <div>Uploading....</div>}
               </div>
               <div className="mb-4">
                 <label htmlFor="telephone_number">เบอร์โทร</label>
