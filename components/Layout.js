@@ -27,13 +27,13 @@ export default function Layout({ title, children }) {
 
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
-          <nav className="flex h-12 items-center px-4 justify-between shadow-md">
+          <div className="flex h-15 items-center px-4 justify-between mt-10">
             <Link href="/">
-              <a className="text-lg font-bold">Cozy Property</a>
+              <a> </a>
             </Link>
-            <div>
+            <div className="text-xl ">
               <Link href="/">
-                <a className="p-2">หน้าแรก</a>
+                <a className=" p-2">หน้าแรก</a>
               </Link>
               <Link href="/contact">
                 <a className="p-2">ติดต่อเรา</a>
@@ -90,10 +90,12 @@ export default function Layout({ title, children }) {
                 <a className="p-2">สมัครสมาชิก</a>
               </Link>
               <Link href="/add_announce">
-                <a className="p-2">ลงประกาศ ฟรี</a>
+                <a className="p-2 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
+                  ลงประกาศ ฟรี
+                </a>
               </Link>
             </div>
-          </nav>
+          </div>
         </header>
         <main className="container m-auto mt-20 px-4">{children}</main>
         <footer className="flex h-5 shadow-md">
