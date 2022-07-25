@@ -96,7 +96,7 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         <main className="container m-auto mt-20 px-4">{children}</main>
-        <footer className="flex h-5 ">
+        <footer className="flex h-5 shadow-md">
           <p className="p-10">
             ติดต่อเรา
             <p>cozyproperty.th@gmail.com</p>
