@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-export default function Sale() {
+export default function ProductItem() {
   return (
     <div>
       <div>
