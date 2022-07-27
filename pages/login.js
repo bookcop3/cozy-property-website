@@ -11,7 +11,7 @@ export default function Login() {
           <Link href="/">
             <a className=" p-2">หน้าแรก</a>
           </Link>
-          <Link href="/contact1">
+          <Link href="/contact">
             <a className="p-2">ติดต่อเรา</a>
           </Link>
           <Link href="/login">

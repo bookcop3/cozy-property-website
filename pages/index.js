@@ -9,10 +9,7 @@ export default function Home({ products }) {
       <h1 className="text-xl mt-10 px-4">ประกาศ</h1>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 mt-5">
         {products.map((product) => (
-          <ProductItem
-            product={product}
-            key={product.product_type === 'บ้าน'}
-          ></ProductItem>
+          <ProductItem product={product} key={product.slug}></ProductItem>
         ))}
       </div>
     </Layout>
