@@ -38,3 +38,15 @@ textarea {
 .dropdown-link {
   @apply flex p-2 hover:bg-gray-200;
 }
+.slick-next, .slick-prev {
+  padding: 14px;
+  width: 2vw;
+  height: 2vw;
+  cursor: pointer;
+  border: none;
+  border-radius: 5vw;
+  background-color: #fff;
+  z-index: 99!important;
+  box-shadow: 0 0 20px 5px rgb(35 35 35 / 50%);
+  top: 40%;
+}
