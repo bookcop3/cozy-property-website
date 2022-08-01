@@ -96,6 +96,52 @@ export default function Layout({ title, children }) {
               </Link>
             </div>
           </div>
+          <div>
+            <div className=" flex items-center justify-center mt-28">
+              <form className="flex items-center">
+                <label form="simple-search" className="sr-only">
+                  Search
+                </label>
+                <div className=" relative w-96">
+                  <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                    <img
+                      src="../../images/Search.png"
+                      width="35"
+                      height="35"
+                      alt="search"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    id="simple-search"
+                    className=" text-gray-900 text-xl rounded-xl  block w-full pl-14 p-2.5   "
+                    placeholder="ค้นหา ชื่อ/ทำเล/โครงการ"
+                    required
+                  />
+                </div>
+                <div className="flex h-10 items-center px-4 justify-center text-lg">
+                  <Link href="/เงื่อนไข">
+                    <a className="p-4 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
+                      เงื่อนไข
+                    </a>
+                  </Link>
+                  <a className="p-4"></a>
+                  <Link href="/ใกล้ฉัน">
+                    <a className="p-4 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
+                      ใกล้ฉัน
+                    </a>
+                  </Link>
+                  <a className="p-4"></a>
+                  <Link href="/ประเภทประกาศ">
+                    <a className="p-4 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
+                      ประเภทประกาศ
+                    </a>
+                  </Link>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div></div>
         </header>
         <main className="container m-auto mt-20 px-4">{children}</main>
         <footer className="flex h-5 shadow-md">

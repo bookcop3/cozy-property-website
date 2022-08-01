@@ -1,87 +1,47 @@
-import Link from 'next/link';
-import React from 'react';
-export default function Login() {
-  return (
-    <div>
-      <div className="flex h-15 items-center px-4 justify-between mt-10">
-        <Link href="/">
-          <a> </a>
-        </Link>
-        <div className="text-xl ">
-          <Link href="/">
-            <a className=" p-2">หน้าแรก</a>
-          </Link>
-          <Link href="/contact">
-            <a className="p-2">ติดต่อเรา</a>
-          </Link>
-          <Link href="/login">
-            <a className="p-2">เข้าสู่ระบบ</a>
-          </Link>
+import React, { useEffect } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import { useForm } from 'react-hook-form';
+import Layout from '../components/Layout';
+import { getError } from '../utils/error';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+export default function LoginScreen() {
+  const { data: session } = useSession();
 
-          <Link href="/register">
-            <a className="p-2">สมัครสมาชิก</a>
-          </Link>
-          <Link href="/add_announce">
-            <a className="p-2 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
-              ลงประกาศ ฟรี
-            </a>
-          </Link>
-        </div>
-      </div>
-      <div className="ml-5 -mt-16">
-        <img
-          src="../../images/logo.png"
-          width="250"
-          height="250"
-          alt="contact"
-        />
-      </div>
-      <div>
-        <div className=" flex items-center justify-center mt-28">
-          <form className="flex items-center">
-            <label form="simple-search" className="sr-only">
-              Search
-            </label>
-            <div className=" relative w-96">
-              <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <img
-                  src="../../images/Search.png"
-                  width="35"
-                  height="35"
-                  alt="search"
-                />
-              </div>
-              <input
-                type="text"
-                id="simple-search"
-                className=" text-gray-900 text-xl rounded-xl  block w-full pl-14 p-2.5   "
-                placeholder="ค้นหา ชื่อ/ทำเล/โครงการ"
-                required
-              />
-            </div>
-            <div className="flex h-10 items-center px-4 justify-center text-lg">
-              <Link href="/เงื่อนไข">
-                <a className="p-4 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
-                  เงื่อนไข
-                </a>
-              </Link>
-              <a className="p-4"></a>
-              <Link href="/ใกล้ฉัน">
-                <a className="p-4 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
-                  ใกล้ฉัน
-                </a>
-              </Link>
-              <a className="p-4"></a>
-              <Link href="/ประเภทประกาศ">
-                <a className="p-4 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
-                  ประเภทประกาศ
-                </a>
-              </Link>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div>
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (session?.user) {
+      router.push(redirect || '/');
+    }
+  }, [router, session, redirect]);
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+      if (result.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(getError(err));
+    }
+  };
+  return (
+    <Layout title="Login">
+      <form
+        className="mx-auto max-w-screen-md"
+        onSubmit={handleSubmit(submitHandler)}
+      >
         <div className="mt-10 flex ml-20 space-x-2 ">
           <img src="../../images/home2.png" width="50" height="50" alt="home" />
           <a className=" text-4xl mt-2">หน้าแรก/เข้าสู่ระบบ</a>
@@ -114,17 +74,16 @@ export default function Login() {
             </div>
 
             <div className="mt-10">
-              <form action="#">
-                <div className="flex flex-col mb-5">
-                  <label
-                    form="email"
-                    className="mb-1 text-xl tracking-wide text-zinc-600"
-                  >
-                    ชื่อผู้ใช้งาน
-                  </label>
-                  <div className="relative">
-                    <div
-                      className="
+              <div className="flex flex-col mb-5">
+                <label
+                  htmlFor="email"
+                  className="mb-1 text-xl tracking-wide text-zinc-600"
+                >
+                  ชื่อผู้ใช้งาน
+                </label>
+                <div className="relative">
+                  <div
+                    className="
                     inline-flex
                     items-center
                     justify-center
@@ -135,15 +94,21 @@ export default function Login() {
                     w-10
                     text-gray-900
                   "
-                    >
-                      <i className="fas fa-user text-blue-500"></i>
-                    </div>
+                  >
+                    <i className="fas fa-user text-blue-500"></i>
+                  </div>
 
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      className="
+                  <input
+                    type="email"
+                    {...register('email', {
+                      required: 'Please enter email',
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
+                        message: 'Please enter valid email',
+                      },
+                    })}
+                    className="
                     
                     placeholder-gray-900
                     pl-5
@@ -154,21 +119,26 @@ export default function Login() {
                     py-2
                     focus:outline-none focus:border-blue-400
                   "
-                      placeholder="ระบุชื่อบัญชี หรือ อีเมล"
-                    />
-                  </div>
+                    placeholder="ระบุชื่อบัญชี หรือ อีเมล"
+                    id="email"
+                  />
+                  {errors.email && (
+                    <div className="text-red-500">{errors.email.message}</div>
+                  )}
                 </div>
+              </div>
+            </div>
 
-                <div className="flex flex-col mb-6">
-                  <label
-                    form="password"
-                    className="mb-1 text-xl tracking-wide text-zinc-600"
-                  >
-                    รหัสผ่าน
-                  </label>
-                  <div className="relative">
-                    <div
-                      className="
+            <div className="flex flex-col mb-6">
+              <label
+                htmlFor="password"
+                className="mb-1 text-xl tracking-wide text-zinc-600"
+              >
+                Password
+              </label>
+              <div className="relative">
+                <div
+                  className="
                     inline-flex
                     items-center
                     justify-center
@@ -179,17 +149,23 @@ export default function Login() {
                     w-10
                     text-gray-900
                   "
-                    >
-                      <span>
-                        <i className="fas fa-lock text-blue-500"></i>
-                      </span>
-                    </div>
+                >
+                  <span>
+                    <i className="fas fa-lock text-blue-500"></i>
+                  </span>
+                </div>
 
-                    <input
-                      id="password"
-                      type="password"
-                      name="password"
-                      className="
+                <input
+                  id="password"
+                  type="password"
+                  {...register('password', {
+                    required: 'Please enter password',
+                    minLength: {
+                      value: 6,
+                      message: 'password is more than 5 chars',
+                    },
+                  })}
+                  className="
                     
                     placeholder-gray-900
                     pl-5
@@ -200,40 +176,21 @@ export default function Login() {
                     py-2
                     focus:outline-none focus:border-blue-400
                   "
-                      placeholder="**********"
-                    />
-                  </div>
-                </div>
-                <div className="flex w-full">
-                  <button
-                    type="submit"
-                    className="
-                  flex
-                  mt-2
-                  items-center
-                  justify-center
-                  focus:outline-none
-                  text-white text-sm
-                  sm:text-base
-                  bg-yellow-500
-                  hover:bg-yellow-600
-                  rounded-2xl
-                  py-2
-                  w-full
-                  transition
-                  duration-150
-                  ease-in
-                "
-                  >
-                    <span className="mr-2 text-2xl uppercase">
-                      ดำเนินการต่อ{' '}
-                    </span>
-                  </button>
-                </div>
-                <div className="flex w-full">
-                  <button
-                    type="submit"
-                    className="
+                  placeholder="**********"
+                />
+                {errors.password && (
+                  <div className="text-red-500">{errors.password.message}</div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="mb-4">
+            <button className="primary-button">Login</button>
+          </div>
+          <div className="flex w-full">
+            <button
+              type="submit"
+              className="
                   flex
                   mt-2
                   items-center
@@ -250,49 +207,46 @@ export default function Login() {
                   duration-150
                   ease-in
                 "
-                  >
-                    <span className="mr-2 text-2xl uppercase">สมัครสมาชิก</span>
-                    <span>
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke-strokeLinecap="round"
-                        stroke-strokeLinejoin="round"
-                        stroke-strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-                <div className="mt-10 flex ml-2 space-x-2 ">
-                  <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center ">
-                    <img
-                      src="../../images/facebook.png"
-                      width="40"
-                      height="40"
-                      alt="contact"
-                    />
+            >
+              <span className="mr-2 text-2xl uppercase">สมัครสมาชิก</span>
+              <span>
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke-strokeLinecap="round"
+                  stroke-strokeLinejoin="round"
+                  stroke-strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div className="mt-10 flex ml-2 space-x-2 ">
+            <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center ">
+              <img
+                src="../../images/facebook.png"
+                width="40"
+                height="40"
+                alt="contact"
+              />
 
-                    <a className="mt-1 text-2xl">Facebook</a>
-                  </button>
-                  <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center">
-                    <img
-                      src="../../images/google.png"
-                      width="40"
-                      height="40"
-                      alt="contact"
-                    />
-                    <a className="mt-1 text-2xl">Google</a>
-                  </button>
-                </div>
-              </form>
-            </div>
+              <a className="mt-1 text-2xl">Facebook</a>
+            </button>
+            <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center">
+              <img
+                src="../../images/google.png"
+                width="40"
+                height="40"
+                alt="contact"
+              />
+              <a className="mt-1 text-2xl">Google</a>
+            </button>
           </div>
         </div>
-      </div>
-    </div>
+      </form>
+    </Layout>
   );
 }
