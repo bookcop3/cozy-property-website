@@ -5,8 +5,9 @@ import db from '../utils/db';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import data from '../utils/data';
 
-export default function Home({ products }) {
+export default function Home() {
   const settings = {
     dots: true,
     infinite: true,
@@ -20,7 +21,7 @@ export default function Home({ products }) {
       <img src="../../images/yellowtag1.png" width="300" height="300" />
       <div>
         <Slider {...settings}>
-          {products.map((product) => (
+          {data.products_home.map((product) => (
             <ProductItem product={product} key={product.slug}></ProductItem>
           ))}
         </Slider>
