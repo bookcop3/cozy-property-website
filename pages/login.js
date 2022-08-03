@@ -50,18 +50,17 @@ export default function LoginScreen() {
         <div>
           <div
             className="
-          flex flex-col
+          flex flex-col 
           bg-white
           shadow-2xl
-          px-4
+          
           sm:px-40
           md:px-36
           lg:px-36
           py-8
           rounded-3xl
-          w-50
-          max-w-screen-sm
-          ml-96
+          max-w-screen
+          
         "
           >
             <div className="flex flex-col  items-center justify-center">
@@ -184,13 +183,34 @@ export default function LoginScreen() {
               </div>
             </div>
           </div>
-          <div className="mb-4">
-            <button className="primary-button">Login</button>
-          </div>
-          <div className="flex w-full">
+          <div className="mt-10">
             <button
               type="submit"
               className="
+                  flex
+                  mt-2
+                  items-center
+                  justify-center
+                  focus:outline-none
+                  text-white text-sm
+                  sm:text-base
+                  bg-yellow-500
+                  hover:bg-yellow-600
+                  rounded-2xl
+                  py-2
+                  w-full
+                  transition
+                  duration-150
+                  ease-in
+                "
+            >
+              <span className="mr-2 text-2xl uppercase">ดำเนินการต่อ </span>
+            </button>
+
+            <div className="flex w-full">
+              <button
+                type="submit"
+                className="
                   flex
                   mt-2
                   items-center
@@ -207,43 +227,44 @@ export default function LoginScreen() {
                   duration-150
                   ease-in
                 "
-            >
-              <span className="mr-2 text-2xl uppercase">สมัครสมาชิก</span>
-              <span>
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke-strokeLinecap="round"
-                  stroke-strokeLinejoin="round"
-                  stroke-strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </span>
-            </button>
-          </div>
-          <div className="mt-10 flex ml-2 space-x-2 ">
-            <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center ">
-              <img
-                src="../../images/facebook.png"
-                width="40"
-                height="40"
-                alt="contact"
-              />
+              >
+                <span className="mr-2 text-2xl uppercase">สมัครสมาชิก</span>
+                <span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    stroke-strokeLinecap="round"
+                    stroke-strokeLinejoin="round"
+                    stroke-strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <div className="mt-10 flex ml-2 space-x-2 ">
+              <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center ">
+                <img
+                  src="../../images/facebook.png"
+                  width="40"
+                  height="40"
+                  alt="contact"
+                />
 
-              <a className="mt-1 text-2xl">Facebook</a>
-            </button>
-            <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center">
-              <img
-                src="../../images/google.png"
-                width="40"
-                height="40"
-                alt="contact"
-              />
-              <a className="mt-1 text-2xl">Google</a>
-            </button>
+                <a className="mt-1 text-2xl">Facebook</a>
+              </button>
+              <button className=" w-full p-2 flex flex-row justify-center gap-2 items-center">
+                <img
+                  src="../../images/google.png"
+                  width="40"
+                  height="40"
+                  alt="contact"
+                />
+                <a className="mt-1 text-2xl">Google</a>
+              </button>
+            </div>
           </div>
         </div>
       </form>
