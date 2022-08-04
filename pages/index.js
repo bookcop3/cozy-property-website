@@ -23,7 +23,10 @@ export default function Home({ products }) {
       <div>
         <Slider {...settings}>
           {products.map((product) => (
-            <ProductItem product={product} key={product.slug}></ProductItem>
+            <ProductItem
+              product={product}
+              key={product.product_type === 'บ้าน'}
+            ></ProductItem>
           ))}
         </Slider>
       </div>
