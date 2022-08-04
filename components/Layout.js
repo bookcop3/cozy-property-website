@@ -1,12 +1,24 @@
 import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
-import Link from 'next/link';
+/*import Link from 'next/link';*/
 import Cookies from 'js-cookie';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Menu } from '@headlessui/react';
 import 'react-toastify/dist/ReactToastify.css';
 import DropdownLink from './DropdownLink';
+
+const Button = (props) => (
+  <li className="rounded-xl px-2 py-2 text-base text-black hover:bg-gray-300 ">
+    <a href={props.href}>{props.text}</a>
+  </li>
+);
+
+const Button1 = (props) => (
+  <li className="text-blck justify-end rounded-2xl border-b-4 border-[#FBC02D] bg-[#FFD831] px-3 py-2 hover:border-[#FFD54F] hover:bg-[#FFEE58]">
+    <a href={props.href}>{props.text1}</a>
+  </li>
+);
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -25,19 +37,15 @@ export default function Layout({ title, children }) {
 
       <ToastContainer position="bottom-center" limit={1} />
 
-      <div className="flex min-h-screen flex-col justify-between ">
-        <header>
-          <div className="flex h-15 items-center px-4 justify-between mt-10">
-            <Link href="/">
-              <a> </a>
-            </Link>
-            <div className="text-xl ">
-              <Link href="/">
-                <a className=" p-2">หน้าแรก</a>
-              </Link>
-              <Link href="/contact">
-                <a className="p-2">ติดต่อเรา</a>
-              </Link>
+      <div>
+        <header className="w-full md:h-[440px]">
+          <img src="../../images/cocyH.jpg" />
+        </header>
+        <div className="absolute inset-0 h-[360px] w-full bg-neutral-100/50">
+          <div>
+            <ul className=" flex justify-end space-x-5 px-2 py-2 font-athiti font-semibold">
+              <Button href="/" text="หน้าแรก"></Button>
+              <Button href="/contact" text="ติดต่อเรา"></Button>
 
               {status === 'loading' ? (
                 'Loading'
@@ -82,21 +90,20 @@ export default function Layout({ title, children }) {
                   </Menu.Items>
                 </Menu>
               ) : (
-                <Link href="/login">
-                  <a className="p-2">เข้าสู่ระบบ</a>
-                </Link>
+                <Button href="/login" text="เข้าสู่ระบบ"></Button>
               )}
-              <Link href="/register">
-                <a className="p-2">สมัครสมาชิก</a>
-              </Link>
-              <Link href="/add_announce">
-                <a className="p-2 inline-block px-4 py-1 rounded-xl  bg-yellow-300 shadow-lg shadow-yellow-500/50">
-                  ลงประกาศ ฟรี
-                </a>
-              </Link>
-            </div>
+              <Button href="/register" text="สมัครสมาชิก"></Button>
+              <ul>
+                <Button1 href="/add_announce" text1="ลงประกาศ ฟรี"></Button1>
+              </ul>
+            </ul>
           </div>
-        </header>
+        </div>
+
+        <div className="img">
+          <img src="../../images/C ZY.png" className="h-[155px] w-[355px]" />
+        </div>
+
         <main className="container m-auto mt-20 px-4">{children}</main>
         <footer className="flex h-5 shadow-md">
           <p className="p-10">
