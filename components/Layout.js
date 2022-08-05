@@ -57,7 +57,7 @@ const SearchFrom = () => {
               required
             />
           </div>
-          <button>
+          <button className>
             <Button3 href="/ค้นหา" text3="ค้นหา"></Button3>
           </button>
         </div>
