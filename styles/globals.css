@@ -66,12 +66,7 @@ textarea {
 .search {
   position: absolute;
   top: 50px;
-  left: -50px;
-}
-
-.search1 {
-  position: relative;
-  left: 70px;
+  left: 0px;
 }
 
 .img2 {
@@ -83,5 +78,17 @@ textarea {
 .button {
   position: absolute;
   top: 423px;
-  left: 905px;
+  left: 950px;
+}
+
+.button1 {
+  position: absolute;
+  top: 0px;
+  left: 400px;
+}
+
+.icon {
+  position: absolute;
+  top: 525px;
+  left: 185px;
 }

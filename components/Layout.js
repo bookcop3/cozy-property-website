@@ -38,7 +38,7 @@ const Button3 = (props) => (
 const SearchFrom = () => {
   return (
     <from onSubmit={(e) => e.search()} className="">
-      <div className="">
+      <div>
         <div className="search">
           <div className="relative w-96">
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -57,7 +57,7 @@ const SearchFrom = () => {
               required
             />
           </div>
-          <button className>
+          <button className="button1">
             <Button3 href="/ค้นหา" text3="ค้นหา"></Button3>
           </button>
         </div>
@@ -164,6 +164,25 @@ export default function Layout({ title, children }) {
             <Button2 href="/เงื่อนไข" text2="เงื่อนไข"></Button2>
             <Button2 href="/ใกล้ฉัน" text2="ใกล้ฉัน"></Button2>
           </ul>
+        </div>
+
+        <div className="item-center icon absolute flex space-x-36">
+          <img
+            src="../../images/home icon.png"
+            className=" h-[180px] w-[180px]"
+          />
+          <img
+            src="../../images/condo icon.png"
+            className=" h-[180px] w-[180px]"
+          />
+          <img
+            src="../../images/Land icon.png"
+            className=" h-[180px] w-[180px]"
+          />
+          <img
+            src="../../images/Other icon.png"
+            className=" h-[180px] w-[180px]"
+          />
         </div>
 
         <main className="container m-auto mt-20 px-4">{children}</main>
