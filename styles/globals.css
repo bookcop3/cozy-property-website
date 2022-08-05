@@ -95,7 +95,12 @@ textarea {
 
 .premium {
   position: absolute;
-  top: 900px;
+  top: 1000px;
+}
+
+.premium1 {
+  position: absolute;
+  top: 100px;
 }
 
 .text-icon1 {
@@ -120,4 +125,15 @@ textarea {
   position: relative;
   top: 290px;
   left: 1040px;
+}
+
+.ADS {
+  position: absolute;
+  top: 820px;
+  left: 60px;
+}
+
+.text-ADS {
+  position: relative;
+  top: 80px;
 }

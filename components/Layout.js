@@ -192,6 +192,11 @@ export default function Layout({ title, children }) {
           </a>
           <a className="text-icon4 font-athiti text-3xl font-semibold">อื่นๆ</a>
         </div>
+        <div>
+          <div className="ADS h-[160px] w-[1400px] bg-amber-200 bg-center">
+            <ul className=" text-ADS text-center">ADS</ul>
+          </div>
+        </div>
 
         <main className="container m-auto mt-20 px-4">{children}</main>
         <footer className="flex h-5 shadow-md">

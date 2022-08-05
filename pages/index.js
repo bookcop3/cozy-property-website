@@ -6,8 +6,13 @@ export default function Home() {
   return (
     <Layout title="Home Page">
       <div className="premium">
-        <h1 className="text-xl mt-10 px-4">ประกาศ</h1>
-        <img src="../../images/yellowtag1.png" width="300" height="300" />
+        <h1 className="font-athiti text-3xl font-semibold mt-10 px-4">
+          ประกาศ
+        </h1>
+        <img
+          src="../../images/yellowtag1.png"
+          className="h-full w-full premium1"
+        />
       </div>
     </Layout>
   );
