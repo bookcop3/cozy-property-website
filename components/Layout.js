@@ -184,6 +184,14 @@ export default function Layout({ title, children }) {
             className=" h-[180px] w-[180px]"
           />
         </div>
+        <div>
+          <a className="text-icon1 font-athiti text-3xl font-semibold">บ้าน</a>
+          <a className="text-icon2 font-athiti text-3xl font-semibold">คอนโด</a>
+          <a className="text-icon3 font-athiti text-3xl font-semibold">
+            ที่ดิน
+          </a>
+          <a className="text-icon4 font-athiti text-3xl font-semibold">อื่นๆ</a>
+        </div>
 
         <main className="container m-auto mt-20 px-4">{children}</main>
         <footer className="flex h-5 shadow-md">

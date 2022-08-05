@@ -16,8 +16,10 @@ export default function Home({ products }) {
   };
   return (
     <Layout title="Home Page">
-      <h1 className="text-xl mt-10 px-4">ประกาศ</h1>
-      <img src="../../images/yellowtag1.png" width="300" height="300" />
+      <div className="premium">
+        <h1 className="text-xl mt-10 px-4">ประกาศ</h1>
+        <img src="../../images/yellowtag1.png" width="300" height="300" />
+      </div>
       <div>
         <Slider {...settings}>
           {products.map((product) => (

@@ -92,3 +92,32 @@ textarea {
   top: 525px;
   left: 185px;
 }
+
+.premium {
+  position: absolute;
+  top: 900px;
+}
+
+.text-icon1 {
+  position: relative;
+  top: 290px;
+  left: 250px;
+}
+
+.text-icon2 {
+  position: relative;
+  top: 290px;
+  left: 510px;
+}
+
+.text-icon3 {
+  position: relative;
+  top: 290px;
+  left: 769px;
+}
+
+.text-icon4 {
+  position: relative;
+  top: 290px;
+  left: 1040px;
+}
