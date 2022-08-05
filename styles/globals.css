@@ -56,3 +56,32 @@ textarea {
   top: 100px;
   left: 590px;
 }
+
+.box-text {
+  position: absolute;
+  top: 322px;
+  left: 450px;
+}
+
+.search {
+  position: absolute;
+  top: 50px;
+  left: -50px;
+}
+
+.search1 {
+  position: relative;
+  left: 70px;
+}
+
+.img2 {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.button {
+  position: absolute;
+  top: 423px;
+  left: 905px;
+}

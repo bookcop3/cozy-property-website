@@ -20,6 +20,52 @@ const Button1 = (props) => (
   </li>
 );
 
+const Button2 = (props) => (
+  <li className="button rounded-xl bg-[#FFD831] px-3 py-3 text-base text-black hover:bg-gray-300">
+    <a href={props.href}>{props.text2}</a>
+  </li>
+);
+
+const Button3 = (props) => (
+  <li
+    className="search1 h-12 rounded-xl bg-[#ffccbc] px-6 py-3 font-athiti font-semibold text-black hover:bg-gray-300"
+    type="submit"
+  >
+    <a href={props.href}>{props.text3}</a>
+  </li>
+);
+
+const SearchFrom = () => {
+  return (
+    <from onSubmit={(e) => e.search()} className="">
+      <div className="">
+        <div className="search">
+          <div className="relative w-96">
+            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <img
+                src="../../images/Search.png"
+                width="30"
+                height="30"
+                alt="search"
+              />
+            </div>
+            <input
+              type="text"
+              id="simple-search"
+              className=" text-gray-900 text-xl rounded-xl  block w-full pl-14 p-2.5   "
+              placeholder="ค้นหา ชื่อ/ทำเล/โครงการ"
+              required
+            />
+          </div>
+          <button>
+            <Button3 href="/ค้นหา" text3="ค้นหา"></Button3>
+          </button>
+        </div>
+      </div>
+    </from>
+  );
+};
+
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
 
@@ -34,7 +80,6 @@ export default function Layout({ title, children }) {
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <ToastContainer position="bottom-center" limit={1} />
 
       <div>
@@ -99,9 +144,26 @@ export default function Layout({ title, children }) {
             </ul>
           </div>
         </div>
-
         <div className="img">
           <img src="../../images/C ZY.png" className="h-[155px] w-[355px]" />
+        </div>
+        <div className="box-text">
+          <div className=" flex justify-center space-x-4 px-2 py-2 font-athiti text-3xl uppercase tracking-wide">
+            <ul className="rounded-3xl rounded-tr-full rounded-br-full rounded-tl-full rounded-bl-full border-b-4 border-[#FFE082] bg-[#FFFFFF] px-20 py-3 font-medium">
+              เว็บประกาศซื้อ ขาย เช่า อสังหาริมทรัพย์
+            </ul>
+          </div>
+          <div className="search">
+            <span>
+              <SearchFrom />
+            </span>
+          </div>
+        </div>
+        <div>
+          <ul className="flex space-x-20 font-athiti font-semibold ">
+            <Button2 href="/เงื่อนไข" text2="เงื่อนไข"></Button2>
+            <Button2 href="/ใกล้ฉัน" text2="ใกล้ฉัน"></Button2>
+          </ul>
         </div>
 
         <main className="container m-auto mt-20 px-4">{children}</main>
