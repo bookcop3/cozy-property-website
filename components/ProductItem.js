@@ -37,7 +37,7 @@ export default function ProductItem({ product }) {
                   />
                 </span>
               </Link>
-              <span className="absolute top-60 inline-block h-10 w-full bg-gray-500/60 text-white text-2xl text-right ">
+              <span className="absolute top-60 inline-block h-10 w-full bg-gray-500/60 text-white text-2xl text-right price-detail">
                 ฿ {product.price}
               </span>
 

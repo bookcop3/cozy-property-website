@@ -1,20 +1,17 @@
-import Layout from '../components/Layout';
+import Header from '../components/header';
 import Product from '../models/Product';
 import db from '../utils/db';
 
 export default function Home() {
   return (
-    <Layout title="Home Page">
+    <Header title="Home Page">
       <div className="premium">
-        <h1 className="font-athiti text-3xl font-semibold mt-10 px-4">
-          ประกาศ
-        </h1>
         <img
           src="../../images/yellowtag1.png"
           className="h-full w-full premium1"
         />
       </div>
-    </Layout>
+    </Header>
   );
 }
 

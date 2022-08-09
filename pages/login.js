@@ -42,7 +42,7 @@ export default function LoginScreen() {
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <div className="mt-10 flex ml-20 space-x-2 ">
+        <div className=" flex mt-96 ml-20 space-x-2 ">
           <img src="../../images/home2.png" width="50" height="50" alt="home" />
           <a className=" text-4xl mt-2">หน้าแรก/เข้าสู่ระบบ</a>
         </div>
