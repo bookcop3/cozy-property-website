@@ -37,7 +37,7 @@ const Button3 = (props) => (
 
 const SearchFrom = () => {
   return (
-    <from onSubmit={(e) => e.search()} className="">
+    <form onSubmit={(e) => e.search()} className="">
       <div>
         <div className="search">
           <div className="relative w-96">
@@ -62,7 +62,7 @@ const SearchFrom = () => {
           </button>
         </div>
       </div>
-    </from>
+    </form>
   );
 };
 
@@ -192,38 +192,32 @@ export default function Layout({ title, children }) {
           </a>
           <a className="text-icon4 font-athiti text-3xl font-semibold">อื่นๆ</a>
         </div>
-        <div>
-          <div className="ADS h-[160px] w-[1400px] bg-amber-200 bg-center">
-            <ul className=" text-ADS text-center">ADS</ul>
-          </div>
-        </div>
-
         <main className="container m-auto mt-20 px-4">{children}</main>
-        <footer className="flex h-5 shadow-md">
-          <p className="p-10">
-            ติดต่อเรา
-            <p>cozyproperty.th@gmail.com</p>
-            <p>+66</p>
-            <img
-              src="../../images/contactIcon.png"
-              width="170"
-              height="170"
-              alt="contact"
-            />
-          </p>
-          <p className="p-10">
-            เกี่ยวกับเรา
-            <p>ลงโฆษณา Banner</p>
-            <p>คูมือการใช้งาน</p>
-          </p>
-          <p className="p-10">
-            บทความ/เนื้อหา
-            <p>เนื้อหา</p>
-            <p>วิธีการลงประกาศ</p>
-            <p>About Asset</p>
-          </p>
-        </footer>
       </div>
+      <footer className="flex h-5 shadow-md">
+        <p className="p-10">
+          ติดต่อเรา
+          <p>cozyproperty.th@gmail.com</p>
+          <p>+66</p>
+          <img
+            src="../../images/contactIcon.png"
+            width="170"
+            height="170"
+            alt="contact"
+          />
+        </p>
+        <p className="p-10">
+          เกี่ยวกับเรา
+          <p>ลงโฆษณา Banner</p>
+          <p>คูมือการใช้งาน</p>
+        </p>
+        <p className="p-10">
+          บทความ/เนื้อหา
+          <p>เนื้อหา</p>
+          <p>วิธีการลงประกาศ</p>
+          <p>About Asset</p>
+        </p>
+      </footer>
     </>
   );
 }
